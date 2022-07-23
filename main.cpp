@@ -3,17 +3,33 @@
 
 int main() {
 
-	char line[255];
-	FILE* fr1 = fopen("noteANSI.txt", "r");
-	if (fr1 == NULL)
-		printf("파일 noteANSI.txt를 열 수 없습니다.\n");
+	{ //Use fopen_s
+		char line[255];
+		FILE* fr1 = fopen("noteANSI.txt", "r");
+		if (fr1 == NULL)
+			printf("Failed Loaded noteANSI.txt\n");
 
-	while (fgets(line, sizeof(line), fr1) != NULL) {
-		printf("%s", line);
-	}
+		while (fgets(line, sizeof(line), fr1) != NULL) {
+			printf("%s", line);
+			
+		fclose(fr1);
+		printf("\n");
+	} //end
+	
+	{ //Use fopen
+		char line[255];
+		FILE* fr1 = fopen("noteANSI.txt", "r");
+		if (fr1 == NULL)
+			printf("Failed Loaded noteANSI.txt\n");
 
-	printf("\n");
-	fclose(fr1);
+		while (fgets(line, sizeof(line), fr1) != NULL) {
+			printf("%s", line);
+			
+		fclose(fr1);
+		printf("\n");
+	} //end
+
+	
 
 	system("pause");
 	return 0;
